@@ -25,7 +25,7 @@ func main() {
 	http.HandleFunc("/public/img/Github", FileHandler("/public/img/Github.png"))
 	http.HandleFunc("/public/img/Linkedin-Logo", FileHandler("/public/img/Linkedin-Logo.png"))
 	http.HandleFunc("/public/scripts/class-tools", FileHandler("/public/scripts/class-tools.js"))
-	http.HandleFunc("/public/scripts/htmx", FileHandler("/public/scripts/htmx.js"))
+	http.HandleFunc("/public/scripts/htmx", FileHandler("/public/scripts/htmx.min.js"))
 
 	//Full page
 	http.HandleFunc("/home", ContentHandler("page_index"))
@@ -51,7 +51,7 @@ func main() {
 
 func FileHandler(name string) http.HandlerFunc {
 	return func(response http.ResponseWriter, request *http.Request) {
-		http.ServeFile(response, request, fmt.Sprintf("%s", name))
+		http.ServeFile(response, request, name)
 	}
 }
 
