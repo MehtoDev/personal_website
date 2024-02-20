@@ -20,7 +20,6 @@ func main() {
 	}
 
 	http.HandleFunc("/", ContentHandler("page_index"))
-	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
 
 	//Full page
 	http.HandleFunc("/home", ContentHandler("page_index"))
@@ -42,12 +41,6 @@ func main() {
 
 	log.Println("listening on", port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
-}
-
-func FileHandler(name string) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, name)
-	}
 }
 
 func NavHandler(i int) http.HandlerFunc {
