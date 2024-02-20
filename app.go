@@ -20,7 +20,7 @@ func main() {
 	}
 
 	http.HandleFunc("/", ContentHandler("page_index"))
-	http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
+	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets/"))))
 
 	//Full page
 	http.HandleFunc("/home", ContentHandler("page_index"))
@@ -45,8 +45,8 @@ func main() {
 }
 
 func FileHandler(name string) http.HandlerFunc {
-	return func(response http.ResponseWriter, request *http.Request) {
-		http.ServeFile(response, request, name)
+	return func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, name)
 	}
 }
 
