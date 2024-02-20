@@ -20,9 +20,9 @@ func main() {
 	}
 
 	http.HandleFunc("/", ContentHandler("page_index"))
-	http.Handle("/public/css/", http.StripPrefix("/public/css/", http.FileServer(http.Dir("./public/css"))))
-	http.Handle("/public/scripts/", http.StripPrefix("/public/scripts/", http.FileServer(http.Dir("./public/scripts"))))
-	http.Handle("/public/img/", http.StripPrefix("/public/img/", http.FileServer(http.Dir("./public/img"))))
+	http.Handle("/public/css/", http.StripPrefix("/public/css/", http.FileServer(http.Dir("/public/css"))))
+	http.Handle("/public/scripts/", http.StripPrefix("/public/scripts/", http.FileServer(http.Dir("/public/scripts"))))
+	http.Handle("/public/img/", http.StripPrefix("/public/img/", http.FileServer(http.Dir("/public/img"))))
 
 	//Full page
 	http.HandleFunc("/home", ContentHandler("page_index"))
