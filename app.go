@@ -20,12 +20,8 @@ func main() {
 	}
 
 	http.HandleFunc("/", ContentHandler("page_index"))
-	http.HandleFunc("/public/css/styles", FileHandler("/public/css/styles.css"))
-	http.HandleFunc("/public/img/Github-Logo", FileHandler("/public/img/Github-Logo.png"))
-	http.HandleFunc("/public/img/Github", FileHandler("/public/img/Github.png"))
-	http.HandleFunc("/public/img/Linkedin-Logo", FileHandler("/public/img/Linkedin-Logo.png"))
-	http.HandleFunc("/public/scripts/class-tools", FileHandler("/public/scripts/class-tools.js"))
-	http.HandleFunc("/public/scripts/htmx", FileHandler("/public/scripts/htmx.min.js"))
+	fs := http.FileServer(http.Dir("public/"))
+	http.Handle("/public/", http.StripPrefix("/public/", fs))
 
 	//Full page
 	http.HandleFunc("/home", ContentHandler("page_index"))
