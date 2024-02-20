@@ -20,7 +20,12 @@ func main() {
 	}
 
 	http.HandleFunc("/", ContentHandler("page_index"))
-	http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("./public"))))
+	http.HandleFunc("/public/css/styles", FileHandler("/public/css/styles.css"))
+	http.HandleFunc("/public/img/Github-Logo", FileHandler("/public/img/Github-Logo.png"))
+	http.HandleFunc("/public/img/Github", FileHandler("/public/img/Github.png"))
+	http.HandleFunc("/public/img/Linkedin-Logo", FileHandler("/public/img/Linkedin-Logo.png"))
+	http.HandleFunc("/public/scripts/class-tools", FileHandler("/public/scripts/class-tools.js"))
+	http.HandleFunc("/public/scripts/htmx", FileHandler("/public/scripts/htmx.js"))
 
 	//Full page
 	http.HandleFunc("/home", ContentHandler("page_index"))
@@ -42,6 +47,12 @@ func main() {
 
 	log.Println("listening on", port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
+}
+
+func FileHandler(name string) http.HandlerFunc {
+	return func(response http.ResponseWriter, request *http.Request) {
+		http.ServeFile(response, request, fmt.Sprintf("%s", name))
+	}
 }
 
 func NavHandler(i int) http.HandlerFunc {
