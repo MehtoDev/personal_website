@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mehto.Dev</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <script src="/public/scripts/htmx.min.js"></script>
+    <script src="/public/scripts/class-tools.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <div class="container">
+    <header class="header">
+      <div>
+        <h1>Mehto.Dev</h1>
+        <p>(work in progress)</p>
+      </div>
+    </header>
+    <section id="main_section" class="content">
+      <nav id="nav_block" class="content_nav">
+        <div id="buttons" class="slide-it" hx-get="/nav/top_level" hx-trigger="load"></div>
+      </nav>
+      <article id="content" class="content_body" hx-get="/content/home" hx-trigger="load">
+      </article>
+    </section>
+    <footer class="footer" hx-get="/content/footer" hx-trigger="load">
+    </footer>
+  </div>
+</html>

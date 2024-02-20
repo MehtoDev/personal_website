@@ -1,0 +1,19 @@
+{{if eq .block 1}}
+<a class="button" hx-get="/content/home" hx-target="#content" hx-swap="innerHTML transition:true">Home</a>
+<a class="button" href="/projects">Projects</a>
+<button class="button" hx-get="/content/about" hx-target="#content">About</button>
+{{end}}
+
+{{if eq .block 2}}
+<button class="button" hx-get="/content/projects" hx-target="#content" hx-swap="innerHTML transition:true">Projects</a>
+<button class="button" hx-get="/content/chess" hx-target="#content" hx-swap="innerHTML transition:true">Checkmate finder</button>
+<a class="button" href="/projects/gamedev">Gamedev</a>
+<a class="button" href="/home">Back</a>
+{{end}}
+
+{{if eq .block 3}}
+<button class="button" hx-get="/content/gamedev" hx-target="#content" hx-swap="innerHTML transition:true">Gamedev</a>
+<button class="button" hx-get="/content/godot_platformer" hx-target="#content" hx-swap="innerHTML transition:true">Godot - 3D Platformer</button>
+<button class="button" hx-get="/content/godot_fps_controller" hx-target="#content" hx-swap="innerHTML transition:true">Godot - FPS controller</button>
+<a class="button" href="/projects">Back</a>
+{{end}}
