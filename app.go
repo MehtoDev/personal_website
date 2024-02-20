@@ -10,8 +10,11 @@ import (
 )
 
 //go:embed templates/*
-var resources embed.FS
-var t = template.Must(template.ParseFS(resources, "templates/*"))
+var templates embed.FS
+var t = template.Must(template.ParseFS(templates, "templates/*"))
+
+//go:embed all:assets
+var assets embed.FS
 
 func main() {
 	port := os.Getenv("PORT")
@@ -20,7 +23,7 @@ func main() {
 	}
 
 	http.HandleFunc("/", ContentHandler("page_index"))
-	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets/"))))
+	http.Handle("/assets/", http.FileServer(http.FS(assets)))
 
 	//Full page
 	http.HandleFunc("/home", ContentHandler("page_index"))
