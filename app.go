@@ -16,7 +16,7 @@ var t = template.Must(template.ParseFS(resources, "templates/*"))
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "42069"
+		port = "8080"
 	}
 
 	http.HandleFunc("/", ContentHandler("page_index"))
