@@ -20,6 +20,7 @@ func main() {
 	}
 
 	http.HandleFunc("/", ContentHandler("page_index"))
+	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets/"))))
 
 	//Full page
 	http.HandleFunc("/home", ContentHandler("page_index"))
