@@ -2,7 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #000000;
+  background: none !important;
 }
 
 :root {
@@ -205,8 +205,9 @@ img {
 
 .footer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding: 20px;
   gap: 10px;
   font-family: 'VT323', monospace;
   font-size: x-large;
@@ -214,4 +215,10 @@ img {
   width: 100%;
   color: var(--text);
   background-color: var(--primary);
+}
+
+.center-footer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }

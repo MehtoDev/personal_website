@@ -7,11 +7,12 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
-//go:embed templates/*
+//go:embed all:templates
 var templates embed.FS
-var t = template.Must(template.ParseFS(templates, "templates/*"))
+var t = template.Must(template.ParseFS(templates, "templates/*.gohtml", "templates/*/*.gohtml"))
 
 //go:embed all:assets
 var assets embed.FS
@@ -22,42 +23,37 @@ func main() {
 		port = "8080"
 	}
 
-	http.HandleFunc("/", ContentHandler("page_index"))
 	http.Handle("/assets/", http.FileServer(http.FS(assets)))
 
-	//Full page
-	http.HandleFunc("/home", ContentHandler("page_index"))
-	http.HandleFunc("/projects", ContentHandler("page_projects"))
-	http.HandleFunc("/projects/gamedev", ContentHandler("page_gamedev"))
-
 	//HTMX handlers
-	http.HandleFunc("/nav/top_level", NavHandler(1))
-	http.HandleFunc("/nav/projects", NavHandler(2))
-	http.HandleFunc("/nav/gamedev", NavHandler(3))
-	http.HandleFunc("/content/footer", ContentHandler("footer"))
-	http.HandleFunc("/content/home", ContentHandler("content_home"))
-	http.HandleFunc("/content/projects", ContentHandler("content_projects"))
-	http.HandleFunc("/content/gamedev", ContentHandler("content_gamedev"))
-	http.HandleFunc("/content/about", ContentHandler("content_about"))
-	http.HandleFunc("/content/chess", ContentHandler("content_chess"))
-	http.HandleFunc("/content/godot_platformer", ContentHandler("content_godot_platformer"))
-	http.HandleFunc("/content/godot_fps_controller", ContentHandler("content_godot_fps_controller"))
+	http.HandleFunc("/nav/", NavHandler)
+	http.HandleFunc("/content/", ContentHandler)
 
+	http.HandleFunc("/", PageHandler)
 	log.Println("listening on", port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
-func NavHandler(i int) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		data := map[string]int{
-			"block": i,
-		}
-		t.ExecuteTemplate(w, "nav.html.tmpl", data)
+func NavHandler(w http.ResponseWriter, r *http.Request) {
+	data := map[string]string{
+		"block": r.URL.Path,
 	}
+	_ = data
+	t.ExecuteTemplate(w, "nav", data)
 }
 
-func ContentHandler(name string) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		t.ExecuteTemplate(w, fmt.Sprintf("%s.html.tmpl", name), nil)
+func ContentHandler(w http.ResponseWriter, r *http.Request) {
+	destination := strings.Replace(r.URL.Path, "/content/", "", -1)
+	t.ExecuteTemplate(w, fmt.Sprintf("article/%s", destination), nil)
+}
+
+func PageHandler(w http.ResponseWriter, r *http.Request) {
+	destination := r.URL.Path
+	if last := len(destination) - 1; last >= 1 && destination[last] == '/' {
+		destination = destination[:last]
 	}
+	data := map[string]string{
+		"block": destination,
+	}
+	t.ExecuteTemplate(w, "page", data)
 }

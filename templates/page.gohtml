@@ -1,0 +1,21 @@
+{{define "page"}}
+  {{if eq .block "/"}}
+  {{template "pages/index"}}
+  {{end}}
+
+  {{if eq .block "/home"}}
+  {{template "pages/index"}}
+  {{end}}
+
+  {{if eq .block "/projects"}}
+  {{template "pages/projects"}}
+  {{end}}
+
+  {{if eq .block "/projects/gamedev"}}
+  {{template "pages/gamedev"}}
+  {{end}}
+
+  {{if eq .block "/projects/gamedev/gamejams"}}
+  {{template "pages/gamejams"}}
+  {{end}}
+{{end}}

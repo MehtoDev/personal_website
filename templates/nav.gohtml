@@ -1,0 +1,34 @@
+{{define "nav"}}
+    {{if eq .block "/nav/top_level"}}
+    <button class="button" hx-get="/content/home" hx-target="#content" hx-swap="innerHTML transition:true">Home</button>
+    <a class="button" href="/projects">Projects</a>
+    <button class="button" hx-get="/content/about" hx-target="#content">About</button>
+    {{end}}
+
+    {{if eq .block "/nav/projects"}}
+    <button class="button" hx-get="/content/projects" hx-target="#content" hx-swap="innerHTML transition:true">Projects</button>
+    <button class="button" hx-get="/content/chess" hx-target="#content" hx-swap="innerHTML transition:true">Checkmate finder</button>
+    <a class="button" href="/projects/gamedev">Gamedev</a>
+    <a class="button" href="/home">Back</a>
+    {{end}}
+
+    {{if eq .block "/nav/gamedev"}}
+    <button class="button" hx-get="/content/gamedev" hx-target="#content" hx-swap="innerHTML transition:true">Gamedev</button>
+    <a class="button" href="/projects/gamedev/gamejams">Gamejams</a>
+    <button class="button" hx-get="/content/godot_platformer" hx-target="#content" hx-swap="innerHTML transition:true">Godot - 3D Platformer</button>
+    <button class="button" hx-get="/content/godot_fps_controller" hx-target="#content" hx-swap="innerHTML transition:true">Godot - FPS controller</button>
+    <a class="button" href="/projects">Back</a>
+    {{end}}
+
+    {{if eq .block "/nav/gamejams"}}
+    <button class="button" hx-get="/content/gamejams" hx-target="#content" hx-swap="innerHTML transition:true">Gamejams</button>
+    <a class="button" href="/projects/gamedev/gamejams/MVM23">Metroidvania Month 23</a>
+    <a class="button" href="/projects/gamedev">Back</a>
+    {{end}}
+
+    {{if eq .block "/nav/MVM23"}}
+    <button class="button" hx-get="/content/MVM23" hx-target="#content" hx-swap="innerHTML transition:true">Gamejams</button>
+    <button class="button" hx-get="/content/MVM23-day1" hx-target="#content" hx-swap="innerHTML transition:true">Day 1</button>
+    <a class="button" href="/projects/gamedev">Back</a>
+    {{end}}
+{{end}}
