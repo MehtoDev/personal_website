@@ -12,9 +12,7 @@
           <article id="content" class="content_body" hx-get="/content/gamejams" hx-trigger="load">
           </article>
         </section>
-        <footer class="footer" hx-get="/content/footer" hx-trigger="load" hx-swap="beforeend">
-          <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Me on Ko-fi', '#404040', 'K3K5REQX9');kofiwidget2.draw();</script>
-        </footer>
+        {{template "footer"}}
       </div>
     </body>
   </html>
