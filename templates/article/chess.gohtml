@@ -4,7 +4,7 @@
     <small>(Status : Work in progress)</small>
     </h1>
     <p class="content_paragraph">This little program takes in a chess position where white has a mate-in-one on the board and finds the move that will result in checkmate. The program is a CLI tool that takes in the board position as a string representation and outputs the starting and ending square for the move resulting in checkmate. The uppercase letters describe positions of white pieces and lowercase letters describe positions of black pieces, '.' describe empty squares.</p>
-    <p class="content_paragraph">In the current Implementation the program assumes that neither side has en passant and neither side can castle. I enjoyed working on the problem and I have plans to implement en passant and castling in the future.</p>
+    <p class="content_paragraph">In the current implementation the program assumes that neither side has en passant and neither side can castle. I enjoyed working on the problem and I have plans to implement en passant and castling in the future.</p>
     <pre><code>
     Example position:
     ........
@@ -19,8 +19,5 @@
     Example output:
     e5e8
     </code></pre>
-    <a class="picture_btn" href="https://github.com/MehtoDev/checkmate_finder" onmousedown="this.style.background='gray'" onmouseup="this.style.background='transparent'">
-        <img src="/assets/img/GitHub-Logo.png"></img>
-        <img src="/assets/img/GitHub.png"></img>
-    </a>
+    {{template "elements/github_button" dict "Link" "checkmate_finder"}}
 {{end}}

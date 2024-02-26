@@ -6,11 +6,11 @@ body {
 }
 
 :root {
-  --text: oklab(96.63% 0.002 0.04);
-  --background: oklab(19.11% -0.001 0.01);
-  --primary: oklab(28.52% 0.000 -0.06);
-  --secondary: oklab(45.14% -0.057 0.03);
-  --accent: oklab(69.40% -0.064 -0.00);
+  --text: oklch(80% 0.02 49.14);
+  --background: oklch(31% 0.015 282.02);
+  --primary: oklch(36% 0.0242 248.9);
+  --secondary: oklch(25% 0.0187 282.02);
+  --accent: oklch(65% 0.05 272.94);
 }
 
 body {
@@ -42,7 +42,6 @@ a {
   to { transform: translateX(-200px); }
 }
 
-
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -52,15 +51,13 @@ a {
 ::-webkit-scrollbar-thumb {
   background: var(--accent);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary);
-}
 
 .container {
   font-family: 'VT323', monospace;
   height: 100%;
   width: 100%;
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   padding: 5px;
 }
@@ -104,12 +101,13 @@ a.button {
 
   font-family: 'VT323', monospace;
   font-size: x-large;
-  color: var(--background);
+  color: var(--secondary);
   padding: 5px;
   width: 100%;
   align-self: center;
   text-align: center;
   background-color: var(--accent);
+  border-radius: 2px;
   transition: ease-in-out 180ms;
   border-style: outset;
   border-width: 2px;
@@ -123,10 +121,11 @@ a.button:hover {
 .button {
   font-family: 'VT323', monospace;
   font-size: x-large;
-  color: var(--background);
+  color: var(--secondary);
   padding: 5px;
   width: 100%;
   align-self: center;
+  border-radius: 2px;
   background-color: var(--accent);
   transition: ease-in-out 180ms;
 }
@@ -153,13 +152,17 @@ a.button:hover {
 }
 
 iframe { 
-  width: 85%;
+  width: 70%;
+  padding: 3px;
   aspect-ratio: 16 / 9;
 }
 
 .content_body {
+  display: flex;
+  flex-direction: column;
   font-family: 'VT323', monospace;
   text-align: center;
+  align-items: center;
   color: var(--text);
   font-size: larger;
   float: left;
@@ -173,10 +176,8 @@ iframe {
 
 .content_paragraph {
   font-family: 'VT323', monospace;
-  text-align: center;
   color: var(--text);
-  padding-left: 7.5%;
-  padding-right: 7.5%;
+  max-width: 85%;
 }
 
 .picture_btn {
