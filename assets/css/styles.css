@@ -2,7 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: none !important;
+  background-color: black;
 }
 
 :root {
@@ -84,6 +84,7 @@ a {
 .content_nav {
   font-family: 'VT323', monospace;
   padding-top: 20px;
+  padding-bottom: 20px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -222,4 +223,17 @@ img {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+}
+
+@media screen and (max-width: 600px) {
+  .content_nav, .content_body {
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+  }
+  .content{
+    overflow: scroll;
+    height: auto;
+  }
 }
