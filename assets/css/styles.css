@@ -274,6 +274,9 @@ img {
   .button:hover {
     transform: none;
   }
+  a.button:hover {
+    transform: none;
+  }
 }
 
 
