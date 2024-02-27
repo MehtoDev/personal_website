@@ -55,6 +55,7 @@ a {
 .container {
   font-family: 'VT323', monospace;
   height: 100%;
+  max-height: 100%;
   width: 100%;
   display: flex;
   overflow: hidden;
@@ -80,7 +81,7 @@ a {
   flex-grow: 1;
   font-family: 'VT323', monospace;
   width: 100%;
-  height: auto;
+  height: calc(100% - 230px);
   background-color: var(--background);
 }
 
@@ -99,14 +100,14 @@ a {
 
 .content_body {
   display: flex;
-  flex-direction: column;
   flex-grow: 1;
-  justify-self: stretch;
-  overflow-y: scroll;
+  flex-direction: column;
+  overflow: scroll;
   align-items: center;
   text-align: center;
   width: auto;
   height: 100%;
+  max-height: 100%;
   padding: 20px;
   font-family: 'VT323', monospace;
   font-size: larger;
