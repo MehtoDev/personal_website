@@ -204,7 +204,6 @@ a.button:hover {
   600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
 
-
 .picture_btn {
   -webkit-appearance: button;
   -moz-appearance: button;
@@ -230,8 +229,6 @@ img {
   max-height: 100%;
   padding: 3px;
 }
-
-
 
 @media screen and (max-width: 820px) {
   .content_nav, .content_body {
@@ -272,6 +269,10 @@ img {
   .center-footer {
     grid-column: 1;
     justify-self: center;
+  }
+
+  .button:hover {
+    transform: none;
   }
 }
 
