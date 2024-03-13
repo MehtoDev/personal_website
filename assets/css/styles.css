@@ -248,6 +248,8 @@ img {
     overflow: visible;
     flex-grow: 1;
     height: max-content;
+    padding-right: 0;
+    padding: 20px;
   }
   
   .footer {
