@@ -1,40 +1,45 @@
+{{define "multibutton"}}
+    <a class="button" hx-push-url="{{.Url}}" hx-swap="innerHTML transition:true">
+        {{.Text}}
+        <div hx-get="{{.Article}}" hx-target="#content" hx-trigger="click from:closest a"></div>
+        <div hx-get="{{.Nav}}" hx-target="#buttons" hx-trigger="click from:closest a"></div>
+    </a>
+{{end}}
+
+{{define "basebutton"}}
+    <a class="button" hx-get="{{.Article}}" hx-target="#content" hx-push-url="{{.Url}}">{{.Text}}</a>
+{{end}}
+
 {{define "nav"}}
     {{if eq .block "/nav/top_level"}}
-    <a class="button" hx-get="/content/home" hx-target="#content" hx-swap="innerHTML transition:true">Home</a>
-    <a class="button" href="/projects">Projects</a>
-    <a class="button" hx-get="/content/about" hx-target="#content">About</a>
+    {{template "basebutton" dict "Url" "/home" "Text" "Home" "Article" "/content/home"}}
+    {{template "multibutton" dict "Url" "/projects" "Text" "Projects" "Article" "/content/projects" "Nav" "/nav/projects"}}
+    {{template "basebutton" dict "Url" "/about" "Text" "About" "Article" "/content/about"}}
     {{end}}
 
     {{if eq .block "/nav/projects"}}
-    <a class="button" hx-get="/content/projects" hx-target="#content" hx-swap="innerHTML transition:true">Projects</a>
-    <a class="button" hx-get="/content/chess" hx-target="#content" hx-swap="innerHTML transition:true">Checkmate finder</a>
-    <a class="button" href="/projects/gamedev">Gamedev</a>
-    <a class="button" href="/home">Back</a>
+    {{template "basebutton" dict "Url" "/projects" "Text" "Projects" "Article" "/content/projects"}}
+    {{template "basebutton" dict "Url" "/projects/c/chess" "Text" "Checkmate finder" "Article" "/content/chess"}}
+    {{template "multibutton" dict "Url" "/projects/gamedev" "Text" "Gamedev" "Article" "/content/gamedev" "Nav" "/nav/gamedev"}}
+    {{template "multibutton" dict "Url" "/home" "Text" "Back" "Article" "/content/home" "Nav" "/nav/top_level"}}
     {{end}}
 
     {{if eq .block "/nav/gamedev"}}
-    <a class="button" hx-get="/content/gamedev" hx-target="#content" hx-swap="innerHTML transition:true">Gamedev</a>
-    <a class="button" href="/projects/gamedev/studies">Studies</a>
-    <a class="button" href="/projects/gamedev/gamejams">Gamejams</a>
-    <a class="button" href="/projects">Back</a>
+    {{template "basebutton" dict "Url" "/projects/gamedev" "Text" "Gamedev" "Article" "/content/gamedev"}}
+    {{template "multibutton" dict "Url" "/projects/gamedev/studies" "Text" "Studies" "Article" "/content/gamedev_studies" "Nav" "/nav/gamedev_studies"}}
+    {{template "multibutton" dict "Url" "/projects/gamedev/gamejams" "Text" "Gamejams" "Article" "/content/gamejams" "Nav" "/nav/gamejams"}}
+    {{template "multibutton" dict "Url" "/projects" "Text" "Back" "Article" "/content/projects" "Nav" "/nav/projects"}}
     {{end}}
 
     {{if eq .block "/nav/gamedev_studies"}}
-    <a class="button" hx-get="/content/gamedev_studies" hx-target="#content" hx-swap="innerHTML transition:true">Studies</a>
-    <a class="button" hx-get="/content/godot_platformer" hx-target="#content" hx-swap="innerHTML transition:true">Godot - 3D Platformer</a>
-    <a class="button" hx-get="/content/godot_fps_controller" hx-target="#content" hx-swap="innerHTML transition:true">Godot - FPS controller</a>
-    <a class="button" href="/projects/gamedev">Back</a>
+    {{template "basebutton" dict "Url" "/projects/gamedev/studies" "Text" "Studies" "Article" "/content/gamedev_studies"}}
+    {{template "basebutton" dict "Url" "/projects/gamedev/studies/c/godot_platformer" "Text" "Godot platformer" "Article" "/content/godot_platformer"}}
+    {{template "basebutton" dict "Url" "/projects/gamedev/studies/c/godot_fps_controller" "Text" "Godot FPS controller" "Article" "/content/godot_fps_controller"}}
+    {{template "multibutton" dict "Url" "/projects/gamedev" "Text" "Back" "Article" "/content/gamedev" "Nav" "/nav/gamedev"}}
     {{end}}
 
     {{if eq .block "/nav/gamejams"}}
-    <a class="button" hx-get="/content/gamejams" hx-target="#content" hx-swap="innerHTML transition:true">Gamejams</a>
-    <a class="button" href="/projects/gamedev/gamejams/MVM23">Metroidvania Month 23</a>
-    <a class="button" href="/projects/gamedev">Back</a>
-    {{end}}
-
-    {{if eq .block "/nav/MVM23"}}
-    <a class="button" hx-get="/content/MVM23" hx-target="#content" hx-swap="innerHTML transition:true">Gamejams</a>
-    <a class="button" hx-get="/content/MVM23/day1" hx-target="#content" hx-swap="innerHTML transition:true">Day 1</a>
-    <a class="button" href="/projects/gamedev">Back</a>
+    {{template "basebutton" dict "Url" "/projects/gamedev/gamejams" "Text" "Gamejams" "Article" "/content/gamejams"}}
+    {{template "multibutton" dict "Url" "/projects/gamedev" "Text" "Back" "Article" "/content/gamedev" "Nav" "/nav/gamedev"}}
     {{end}}
 {{end}}

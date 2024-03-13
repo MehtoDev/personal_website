@@ -1,29 +1,42 @@
 {{define "page"}}
   {{if eq .block "/"}}
-  {{template "pages/index"}}
+  {{template "basepage" dict "Nav" "/nav/top_level" "Article" "/content/home"}}
   {{end}}
 
   {{if eq .block "/home"}}
-  {{template "pages/index"}}
+  {{template "basepage" dict "Nav" "/nav/top_level" "Article" "/content/home"}}
+  {{end}}
+  
+  {{if eq .block "/about"}}
+  {{template "basepage" dict "Nav" "/nav/top_level" "Article" "/content/about"}}
+  {{end}}
+  
+  {{if eq .block "/projects"}}
+  {{template "basepage" dict "Nav" "/nav/projects" "Article" "/content/projects"}}
   {{end}}
 
-  {{if eq .block "/projects"}}
-  {{template "pages/projects"}}
+  {{if eq .block "/projects/c/chess"}}
+  {{template "basepage" dict "Nav" "/nav/projects" "Article" "/content/chess"}}
   {{end}}
 
   {{if eq .block "/projects/gamedev"}}
-  {{template "pages/gamedev"}}
+  {{template "basepage" dict "Nav" "/nav/gamedev" "Article" "/content/gamedev"}}
   {{end}}
 
   {{if eq .block "/projects/gamedev/gamejams"}}
-  {{template "pages/gamejams"}}
+  {{template "basepage" dict "Nav" "/nav/gamejams" "Article" "/content/gamejams"}}
   {{end}}
-
+  
   {{if eq .block "/projects/gamedev/studies"}}
-  {{template "pages/gamedev_studies"}}
+  {{template "basepage" dict "Nav" "/nav/gamedev_studies" "Article" "/content/gamedev_studies"}}
   {{end}}
 
-  {{if eq .block "/projects/gamedev/gamejams/MVM23"}}
-  {{template "pages/MVM23"}}
+  {{if eq .block "/projects/gamedev/studies/c/godot_platformer"}}
+  {{template "basepage" dict "Nav" "/nav/gamedev_studies" "Article" "/content/godot_platformer"}}
   {{end}}
+
+  {{if eq .block "/projects/gamedev/studies/c/godot_fps_controller"}}
+  {{template "basepage" dict "Nav" "/nav/gamedev_studies" "Article" "/content/godot_fps_controller"}}
+  {{end}}
+
 {{end}}

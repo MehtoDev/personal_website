@@ -16,7 +16,7 @@ var templates embed.FS
 var funcMap = template.FuncMap{
 	"dict": dict,
 }
-var t = template.Must(template.New("").Funcs(funcMap).ParseFS(templates, "templates/*.gohtml", "templates/*/*.gohtml", "templates/*/*/*.gohtml"))
+var t = template.Must(template.New("").Funcs(funcMap).ParseFS(templates, "templates/*.gohtml", "templates/*/*.gohtml"))
 
 //go:embed all:assets
 var assets embed.FS
