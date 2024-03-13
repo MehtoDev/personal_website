@@ -7,9 +7,9 @@
         {{template "header"}}
         <section id="main_section" class="content">
           <nav id="nav_block" class="content_nav">
-            <div id="buttons" class="slide-it" hx-get="{{.Nav}}" hx-trigger="load" hx-history-elt></div>
+            <div id="buttons" class="slide-it" hx-get="{{.Nav}}" hx-trigger="load"></div>
           </nav>
-          <article id="content" class="content_body" hx-get="{{.Article}}" hx-trigger="load" hx-history-elt>
+          <article id="content" class="content_body" hx-get="{{.Article}}" hx-trigger="load">
           </article>
         </section>
         {{template "footer"}}
