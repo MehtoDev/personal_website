@@ -283,6 +283,24 @@ img {
   }
 }
 
+.separator {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  align-items: center;
+  color: var(--text);
+}
+.separator:before,
+.separator:after {
+  content: "";
+  flex-grow: 1;
+  background: var(--text);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+  margin: 0px 8px;
+}
+
 
 
 img.kofiimg{
